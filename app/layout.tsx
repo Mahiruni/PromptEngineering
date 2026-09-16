@@ -8,6 +8,7 @@ import './header-footer-standard.css'
 import './information.css'
 import './information-mobile.css'
 import './accessibility-final.css'
+import './studio-premium.css'
 import CookieConsent from '@/components/cookie-consent'
 
 export const metadata: Metadata = {
