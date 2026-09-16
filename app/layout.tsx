@@ -11,6 +11,7 @@ import './accessibility-final.css'
 import './studio-premium.css'
 import './prompt-details.css'
 import './ux-polish.css'
+import './remove-hero-person.css'
 import CookieConsent from '@/components/cookie-consent'
 
 export const metadata: Metadata = {
