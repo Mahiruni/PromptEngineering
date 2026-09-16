@@ -20,6 +20,23 @@ main:not(.light) .modal-backdrop{background:rgba(2,8,18,.65)}
 main:not(.light) .progress{background:#26364b}
 main:not(.light) .nav-links{color:#aab8c9}
 main:not(.light) .nav-links a:hover{color:#fff}
+/* Explicit contrast rules: prevent inherited light/dark text from becoming unreadable. */
+main:not(.light) .muted,main:not(.light) small,main:not(.light) .stat small,main:not(.light) .library-meta,main:not(.light) .lead,main:not(.light) .hero-copy,main:not(.light) .proof-row,main:not(.light) .prompt-card p,main:not(.light) .process p,main:not(.light) .meta-block p,main:not(.light) .related-box p,main:not(.light) .result-count,main:not(.light) .quality-row span,main:not(.light) .eyebrow{color:#aab8c9}
+main:not(.light) .section h2,main:not(.light) .section h3,main:not(.light) .prompt-title,main:not(.light) .stat strong,main:not(.light) .price strong,main:not(.light) .website h2,main:not(.light) .modal h2,main:not(.light) .wizard h2,main:not(.light) .modal-head strong,main:not(.light) .path b,main:not(.light) .result-mini strong{color:#edf4fb}
+main:not(.light) .prompt-label,main:not(.light) .field span,main:not(.light) .prompt-top button,main:not(.light) .rating button,main:not(.light) .select select,main:not(.light) .field input{color:#c4d0de}
+main:not(.light) .search-wrap input::placeholder,main:not(.light) .field input::placeholder{color:#8192a8;opacity:1}
+main.light .muted,main.light small,main.light .stat small,main.light .library-meta,main.light .lead,main.light .hero-copy,main.light .proof-row,main.light .prompt-card p,main.light .process p,main.light .meta-block p,main.light .related-box p,main.light .result-count,main.light .quality-row span,main.light .eyebrow{color:#5f6b7a}
+main.light .section h2,main.light .section h3,main.light .prompt-title,main.light .stat strong,main.light .price strong,main.light .website h2,main.light .modal h2,main.light .wizard h2,main.light .modal-head strong,main.light .path b,main.light .result-mini strong{color:#102033}
+main.light .prompt-label,main.light .field span,main.light .prompt-top button,main.light .rating button,main.light .select select,main.light .field input{color:#526174}
+main.light .search-wrap input::placeholder,main.light .field input::placeholder{color:#7b8796;opacity:1}
+/* Controls and result panes inherit the active theme instead of retaining stale light colors. */
+main:not(.light) .result-showcase,main:not(.light) .result-mini,main:not(.light) .output-card,main:not(.light) .related-box,main:not(.light) .example-tabs button{background:#111a2a;color:var(--text);border-color:var(--line)}
+main:not(.light) .results-pane{background:#0f1726}
+main:not(.light) .example-tabs button.active{background:#5b9cf6;color:#07111e;border-color:#5b9cf6}
+main:not(.light) .modal pre{color:#e8f0f8}
+main.light .result-showcase,main.light .result-mini,main.light .output-card,main.light .related-box,main.light .example-tabs button{color:#102033}
+main.light .results-pane{background:#fff}
+main.light .example-tabs button.active{background:#1473e6;color:#fff;border-color:#1473e6}
 .theme-toggle{position:relative;overflow:hidden}
 .theme-toggle svg{transition:transform .35s ease,opacity .25s ease}
 .theme-toggle:hover svg{transform:rotate(18deg) scale(1.08)}
