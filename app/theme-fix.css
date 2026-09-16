@@ -1,60 +1,60 @@
-/* Global accessibility theme layer — deliberately high-contrast, calm, and consistent. */
-:root{--bg:#05070a;--surface:#0d1117;--band:#090d12;--panel:#11161d;--text:#fff;--muted:#d2d7de;--line:#303843;--accent:#6ea8ff;--accent-strong:#9ac2ff;--olive:#152238}
+/* Global theme layer — calm, premium contrast in dark mode and crisp contrast in light mode. */
+:root{--bg:#080a0d;--surface:#101318;--band:#0c0f13;--panel:#14181e;--text:#f0f2f5;--muted:#aeb6c1;--line:#272e37;--accent:#78a9e8;--accent-strong:#9bbcf0;--olive:#172233}
 html{background:var(--bg)}
 body{background:var(--bg);color:var(--text);transition:background-color .35s ease,color .35s ease}
 main{min-height:100vh;background:var(--bg);color:var(--text);transition:background-color .35s ease,color .35s ease}
 main.light{--bg:#fff;--surface:#fff;--band:#f5f7fa;--panel:#fff;--text:#111;--muted:#3f4854;--line:#d4d9e0;--accent:#075dcc;--accent-strong:#064ca7;--olive:#e9f2ff}
 /* Surfaces */
-main:not(.light) .glass{background:rgba(13,17,23,.96);border-color:#303843;box-shadow:0 16px 45px rgba(0,0,0,.38)}
+main:not(.light) .glass{background:rgba(16,19,24,.94);border-color:#272e37;box-shadow:0 16px 45px rgba(0,0,0,.26)}
 main.light .glass{background:rgba(255,255,255,.97);border-color:#d4d9e0;box-shadow:0 12px 35px rgba(17,17,17,.07)}
-main:not(.light) .card{background:#0d1117;border-color:#303843;box-shadow:0 16px 45px rgba(0,0,0,.34)}
+main:not(.light) .card{background:#101318;border-color:#272e37;box-shadow:0 16px 45px rgba(0,0,0,.24)}
 main.light .card{background:#fff;border-color:#d4d9e0;box-shadow:0 12px 38px rgba(17,17,17,.06)}
-/* Typography: body copy is intentionally stronger than conventional muted UI gray. */
-main:not(.light) :is(p,li,span,label,small,.muted,.lead,.library-meta,.hero-copy,.proof-row,.prompt-card p,.process p,.meta-block p,.related-box p,.result-count,.quality-row span,.eyebrow){color:#d2d7de}
-main:not(.light) :is(h1,h2,h3,h4,h5,h6,strong,b,.prompt-title,.stat strong,.price strong,.website h2,.modal h2,.wizard h2,.modal-head strong,.path b,.result-mini strong){color:#fff}
+/* Typography — avoid stark white-on-near-black contrast. */
+main:not(.light) :is(p,li,span,label,small,.muted,.lead,.library-meta,.hero-copy,.proof-row,.prompt-card p,.process p,.meta-block p,.related-box p,.result-count,.quality-row span,.eyebrow){color:#aeb6c1}
+main:not(.light) :is(h1,h2,h3,h4,h5,h6,strong,b,.prompt-title,.stat strong,.price strong,.website h2,.modal h2,.wizard h2,.modal-head strong,.path b,.result-mini strong){color:#f0f2f5}
 main.light :is(p,li,span,label,small,.muted,.lead,.library-meta,.hero-copy,.proof-row,.prompt-card p,.process p,.meta-block p,.related-box p,.result-count,.quality-row span,.eyebrow){color:#3f4854}
 main.light :is(h1,h2,h3,h4,h5,h6,strong,b,.prompt-title,.stat strong,.price strong,.website h2,.modal h2,.wizard h2,.modal-head strong,.path b,.result-mini strong){color:#111}
 /* Interactive controls */
-main:not(.light) :is(.btn-ghost,.tag,.chip,.path,.package-row span,.search-wrap input,.select select,.field input,.field textarea,.field select){background:#11161d;color:#fff;border-color:#3a424d}
+main:not(.light) :is(.btn-ghost,.tag,.chip,.path,.package-row span,.search-wrap input,.select select,.field input,.field textarea,.field select){background:#14181e;color:#e7eaf0;border-color:#303741}
 main.light :is(.btn-ghost,.tag,.chip,.path,.package-row span,.search-wrap input,.select select,.field input,.field textarea,.field select){background:#fff;color:#111;border-color:#c8ced6}
-main:not(.light) .btn-ghost:hover{background:#1a2028;border-color:#5a6572}
+main:not(.light) .btn-ghost:hover{background:#1a1f26;border-color:#454e5a}
 main.light .btn-ghost:hover{background:#f4f7fa;border-color:#9fa9b6}
-main:not(.light) .chip.active{background:#173b70;border-color:#4e8fe8;color:#fff}
+main:not(.light) .chip.active{background:#1a3557;border-color:#4c78ad;color:#eef4fb}
 main.light .chip.active{background:#e6f0ff;border-color:#75a9e8;color:#064ca7}
-main:not(.light) .search-wrap input::placeholder,main:not(.light) .field input::placeholder,main:not(.light) textarea::placeholder{color:#aeb7c2;opacity:1}
+main:not(.light) .search-wrap input::placeholder,main:not(.light) .field input::placeholder,main:not(.light) textarea::placeholder{color:#89939f;opacity:1}
 main.light .search-wrap input::placeholder,main.light .field input::placeholder,main.light textarea::placeholder{color:#596575;opacity:1}
 /* Navigation */
-main:not(.light) .nav-links,main:not(.light) .nav-links a{color:#d2d7de}
-main:not(.light) .nav-links a:hover{color:#fff}
+main:not(.light) .nav-links,main:not(.light) .nav-links a{color:#b5bdc8}
+main:not(.light) .nav-links a:hover{color:#edf0f4}
 main.light .nav-links,main.light .nav-links a{color:#303944}
 main.light .nav-links a:hover{color:#111}
 /* Hero, bands, result panes and code blocks */
-main:not(.light) .hero{background:linear-gradient(180deg,#080b10 0%,#05070a 76%,#0b1016 100%)}
+main:not(.light) .hero{background:linear-gradient(180deg,#0b0e12 0%,#080a0d 76%,#0d1116 100%)}
 main.light .hero{background:linear-gradient(180deg,#fff 0%,#f7f9fc 76%,#fff 100%)}
-main:not(.light) .hero .tag{background:#11161d;color:#fff;border-color:#3a424d}
+main:not(.light) .hero .tag{background:#14181e;color:#e7eaf0;border-color:#303741}
 main.light .hero .tag{background:#fff;color:#111;border-color:#c8ced6}
-main:not(.light) .band{background:#090d12;border-color:#303843}
+main:not(.light) .band{background:#0c0f13;border-color:#272e37}
 main.light .band{background:#f5f7fa;border-color:#d4d9e0}
-main:not(.light) .path,main:not(.light) .package-row span{background:#11161d}
+main:not(.light) .path,main:not(.light) .package-row span{background:#14181e}
 main.light .path,main.light .package-row span{background:#fff}
-main:not(.light) footer{background:#05070a;border-color:#303843}
+main:not(.light) footer{background:#080a0d;border-color:#272e37}
 main.light footer{background:#fff;border-color:#d4d9e0}
-main:not(.light) :is(.result-showcase,.result-mini,.output-card,.related-box,.example-tabs button){background:#11161d;color:#fff;border-color:#303843}
+main:not(.light) :is(.result-showcase,.result-mini,.output-card,.related-box,.example-tabs button){background:#14181e;color:#eef0f3;border-color:#272e37}
 main.light :is(.result-showcase,.result-mini,.output-card,.related-box,.example-tabs button){background:#fff;color:#111;border-color:#d4d9e0}
-main:not(.light) .results-pane{background:#090d12;color:#fff}
+main:not(.light) .results-pane{background:#0c0f13;color:#eef0f3}
 main.light .results-pane{background:#fff;color:#111}
-main:not(.light) .example-tabs button.active{background:#6ea8ff;color:#05070a;border-color:#6ea8ff}
+main:not(.light) .example-tabs button.active{background:#78a9e8;color:#101318;border-color:#78a9e8}
 main.light .example-tabs button.active{background:#075dcc;color:#fff;border-color:#075dcc}
-main:not(.light) .modal pre{background:#05070a;border-color:#303843;color:#f5f5f5}
+main:not(.light) .modal pre{background:#080a0d;border-color:#272e37;color:#e5e8ed}
 main.light .modal pre{background:#f4f6f8;border-color:#d4d9e0;color:#111}
-main:not(.light) .modal-backdrop{background:rgba(0,0,0,.78)}
+main:not(.light) .modal-backdrop{background:rgba(0,0,0,.68)}
 main.light .modal-backdrop{background:rgba(17,17,17,.42)}
-main:not(.light) .progress{background:#303843}
+main:not(.light) .progress{background:#272e37}
 main.light .progress{background:#d4d9e0}
 /* Form labels and secondary controls */
-main:not(.light) :is(.prompt-label,.field span,.prompt-top button,.rating button){color:#d2d7de}
+main:not(.light) :is(.prompt-label,.field span,.prompt-top button,.rating button){color:#aeb6c1}
 main.light :is(.prompt-label,.field span,.prompt-top button,.rating button){color:#3f4854}
-/* Primary actions retain white-on-blue in both modes. */
+/* Primary actions retain clear hierarchy without making the whole UI high-contrast. */
 main .btn-primary{background:#075dcc;color:#fff;border-color:#075dcc}
 main .btn-primary:hover{background:#064ca7;color:#fff}
 /* Theme transition without sacrificing reduced-motion accessibility. */
