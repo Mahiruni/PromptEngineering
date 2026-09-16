@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
   const response = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST',
     headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model: process.env.OPENAI_PROMPT_MODEL || 'gpt-5-mini', input: [{ role: 'system', content: system }, { role: 'user', content: `Improve this rough prompt:\n\n${prompt}` }], temperature: 0.2, max_output_tokens: 1800 }),
+    body: JSON.stringify({ model: process.env.OPENAI_PROMPT_MODEL || 'gpt-5-mini', input: [{ role: 'system', content: system }, { role: 'user', content: `Improve this rough prompt:\n\n${prompt}` }], max_output_tokens: 1800 }),
     cache: 'no-store',
   })
   const data = await response.json()
