@@ -1,0 +1,43 @@
+/* Final accessibility layer: loaded last so legacy visual layers cannot reduce contrast. */
+html,body{transition:background-color .35s ease,color .35s ease}
+main.light{background:#fff!important;color:#111!important}
+main.light :is(.hero,.band,section,footer){color:#111}
+main.light :is(.hero h1,.hero-title:after,.section h2,.section h3,.section-title,.website h2,.price strong,.prompt-title,.stat strong,.modal h2,.wizard h2){color:#111!important}
+main.light :is(.hero-copy,.muted,.lead,.proof-row,.library-meta,.prompt-card p,.process p,.result-count,.quality-row span,.eyebrow){color:#3f4854!important}
+main.light :is(.nav,.glass,.card,.stats,.prompt-card,.price,.website,.path,.result-showcase,.result-mini,.output-card,.related-box){background:#fff!important;border-color:#d4d9e0!important}
+main.light :is(.btn-ghost,.tag,.chip,.search-wrap input,.select select,.field input,.field textarea,.field select){background:#fff!important;color:#111!important;border-color:#c8ced6!important}
+main.light .btn-primary{background:#075dcc!important;color:#fff!important}
+main.light .chip.active{background:#e6f0ff!important;color:#064ca7!important;border-color:#75a9e8!important}
+main.light .hero{background:linear-gradient(180deg,#fff 0%,#f7f9fc 76%,#fff 100%)!important}
+main.light .band{background:#f5f7fa!important}
+main.light .prompt-pane pre,main.light .modal pre{background:#f4f6f8!important;color:#111!important;border-color:#d4d9e0!important}
+main.light input::placeholder,main.light textarea::placeholder{color:#596575!important;opacity:1!important}
+
+main:not(.light){background:#05070a!important;color:#fff!important}
+main:not(.light) :is(.hero,.band,section,footer){color:#fff}
+main:not(.light) :is(.hero h1,.hero-title:after,.section h2,.section h3,.section-title,.website h2,.price strong,.prompt-title,.stat strong,.modal h2,.wizard h2){color:#fff!important}
+main:not(.light) :is(.hero-copy,.muted,.lead,.proof-row,.library-meta,.prompt-card p,.process p,.result-count,.quality-row span,.eyebrow){color:#d2d7de!important}
+main:not(.light) :is(.nav,.glass,.card,.stats,.prompt-card,.price,.website,.path,.result-showcase,.result-mini,.output-card,.related-box){background:#0d1117!important;border-color:#303843!important;color:#fff!important}
+main:not(.light) :is(.btn-ghost,.tag,.chip,.search-wrap input,.select select,.field input,.field textarea,.field select){background:#11161d!important;color:#fff!important;border-color:#3a424d!important}
+main:not(.light) .btn-primary{background:#075dcc!important;color:#fff!important}
+main:not(.light) .chip.active{background:#173b70!important;color:#fff!important;border-color:#4e8fe8!important}
+main:not(.light) .hero{background:linear-gradient(180deg,#080b10 0%,#05070a 76%,#0b1016 100%)!important}
+main:not(.light) .band{background:#090d12!important}
+main:not(.light) .prompt-pane pre,main:not(.light) .modal pre{background:#05070a!important;color:#f5f5f5!important;border-color:#303843!important}
+main:not(.light) input::placeholder,main:not(.light) textarea::placeholder{color:#aeb7c2!important;opacity:1!important}
+main:not(.light) .nav-links a{color:#d2d7de!important}.nav-links a:hover{color:#fff!important}
+main:not(.light) footer{background:#05070a!important;border-color:#303843!important}
+
+/* Information pages: always explicit, readable surfaces; their shell currently has no theme state. */
+.info-page{color:#111!important;background:linear-gradient(180deg,#fff 0%,#f7f9fc 38%,#fff 100%)!important}
+.info-page :is(h1,h2,h3,h4,strong,b,summary,label){color:#111!important}
+.info-page :is(p,li,.info-hero p,.info-section p,.info-section li,.info-card p,.info-footer p,.footer-links,.footer-copy,.help-results){color:#3f4854!important}
+.info-page :is(.info-card,.step,.faq-item){background:#fff!important;border-color:#d4d9e0!important}
+.info-header,.info-footer{background:#fff!important;border-color:#d4d9e0!important}
+.info-nav,.info-nav a,.footer-links a{color:#303944!important}
+.info-nav a:hover,.footer-links a:hover{color:#111!important}
+
+/* WCAG-focused focus states remain visible in either theme. */
+main :is(a,button,input,select,textarea,summary):focus-visible,.info-page :is(a,button,input,select,textarea,summary):focus-visible{outline:3px solid #5da2ff!important;outline-offset:3px}
+
+@media(prefers-reduced-motion:reduce){html,body,main{transition:none!important}}
