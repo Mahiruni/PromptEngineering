@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-export async function GET(request: Request) {
+export async function GET() {
   const secret = process.env.STRIPE_SECRET_KEY
   const price = process.env.STRIPE_PRO_PRICE_ID
   const appUrl = process.env.NEXT_PUBLIC_APP_URL
@@ -11,7 +11,6 @@ export async function GET(request: Request) {
     'line_items[0][price]': price,
     'line_items[0][quantity]': '1',
     'subscription_data[trial_period_days]': '7',
-    'customer_creation': 'always',
     success_url: `${appUrl}/api/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${appUrl}/#pricing`,
     'allow_promotion_codes': 'true',
