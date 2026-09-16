@@ -4,6 +4,7 @@ import './promptforge.css'
 import './premium-home.css'
 import './theme-fix.css'
 import './hero-overhaul.css'
+import './header-footer-standard.css'
 
 export const metadata: Metadata = {
   title: 'PromptForge Business — Master Prompt Engineering.',
