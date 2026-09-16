@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import './promptforge.css'
 import './premium-home.css'
+import './theme-fix.css'
 
 export const metadata: Metadata = {
   title: 'PromptForge Business — Master Prompt Engineering.',
