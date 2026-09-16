@@ -1,0 +1,26 @@
+/* Theme system: dark is the default state; main.light activates the polished light theme. */
+:root{--bg:#0b1220;--surface:#111a2a;--band:#0f1726;--panel:#111a2a;--text:#edf4fb;--muted:#9aa9bc;--line:#26364b;--accent:#5b9cf6;--accent-strong:#7bb3ff;--olive:#17253a}
+main{min-height:100vh;background:var(--bg);color:var(--text);transition:background-color .35s ease,color .35s ease}
+main.light{--bg:#f7f9fc;--surface:#fff;--band:#eef3f8;--panel:#fff;--text:#102033;--muted:#647286;--line:#dfe6ee;--accent:#1473e6;--accent-strong:#0759c9;--olive:#eaf3ff}
+main:not(.light) .glass{background:rgba(17,26,42,.9);border-color:rgba(255,255,255,.09);box-shadow:0 12px 38px rgba(0,0,0,.22)}
+main.light .glass{background:rgba(255,255,255,.92)}
+main:not(.light) .card{background:var(--surface);border-color:var(--line);box-shadow:0 14px 45px rgba(0,0,0,.18)}
+main:not(.light) .btn-ghost,main:not(.light) .tag,main:not(.light) .chip,main:not(.light) .path,main:not(.light) .package-row span,main:not(.light) .search-wrap input,main:not(.light) .select select,main:not(.light) .field input{background:#111a2a;color:var(--text);border-color:var(--line)}
+main:not(.light) .btn-ghost:hover{background:#17253a;border-color:#3b506a}
+main:not(.light) .chip.active{background:#17345b;border-color:#315f98;color:#9fc7ff}
+main:not(.light) .hero{background:linear-gradient(180deg,#0c1422 0%,#0b1220 72%,#101a2a 100%)}
+main:not(.light) .hero .tag{background:rgba(17,26,42,.82)}
+main:not(.light) .hero::before{background:radial-gradient(circle,rgba(91,156,246,.16),rgba(91,156,246,0) 68%)}
+main:not(.light) .band{background:#0f1726;border-color:#26364b}
+main:not(.light) .path{background:#111a2a}
+main:not(.light) .package-row span{background:#111a2a}
+main:not(.light) footer{background:#0b1220;border-color:#26364b}
+main:not(.light) .modal pre{background:#0b1220;border-color:#26364b;color:#e8f0f8}
+main:not(.light) .modal-backdrop{background:rgba(2,8,18,.65)}
+main:not(.light) .progress{background:#26364b}
+main:not(.light) .nav-links{color:#aab8c9}
+main:not(.light) .nav-links a:hover{color:#fff}
+.theme-toggle{position:relative;overflow:hidden}
+.theme-toggle svg{transition:transform .35s ease,opacity .25s ease}
+.theme-toggle:hover svg{transform:rotate(18deg) scale(1.08)}
+@media(prefers-reduced-motion:reduce){main,.theme-toggle svg{transition:none}}
