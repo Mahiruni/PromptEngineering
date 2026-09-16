@@ -75,7 +75,7 @@ export default function ImprovePromptPage() {
   return <main className="improve-page">
     <header className="improve-nav">
       <a href="/" className="improve-brand"><span>P</span> PromptForge <i>Business</i></a>
-      <a href="/pricing" className="improve-back">View plans <ArrowRight size={15} /></a>
+      <a href="/#pricing" className="improve-back">View plans <ArrowRight size={15} /></a>
     </header>
 
     <section className="improve-hero">
@@ -122,7 +122,7 @@ export default function ImprovePromptPage() {
     <section className="improve-lock">
       <Lock size={18}/>
       <div><strong>{used >= FREE_LIMIT && !pro ? 'Your five free improvements are complete.' : 'Five free improvements. Then keep going with Pro.'}</strong><span>{pro ? 'You have unlimited access to the PromptForge improvement engine.' : 'Try the engine with no commitment. When you reach improvement #6, choose a PromptForge plan to continue.'}</span></div>
-      <a href="/pricing">{pro ? 'Explore PromptForge' : 'Subscribe or purchase'} <ArrowRight size={15}/></a>
+      <a href="/api/checkout?plan=pro">Subscribe / unlock Pro <ArrowRight size={15}/></a>
     </section>
 
     {showPaywall && <div className="improve-modal-backdrop" role="presentation" onClick={() => setShowPaywall(false)}>
@@ -133,8 +133,8 @@ export default function ImprovePromptPage() {
         <h2 id="paywall-title">You’ve used all 5 free improvements.</h2>
         <p>Your sixth improvement is ready when you are. Subscribe or purchase PromptForge access to keep turning rough ideas into powerful prompts.</p>
         <div className="paywall-stats"><div><b>5/5</b><span>free uses</span></div><div><b>100%</b><span>used</span></div><div><b>∞</b><span>with Pro</span></div></div>
-        <a className="paywall-primary" href="/pricing">See plans & unlock Pro <ArrowRight size={16}/></a>
-        <button className="paywall-secondary" onClick={() => setShowPaywall(false)}>Maybe later</button>
+        <a className="paywall-primary" href="/api/checkout?plan=pro">Subscribe & unlock Pro <ArrowRight size={16}/></a>
+        <a className="paywall-secondary" href="/#pricing">View pricing</a>
       </div>
     </div>}
   </main>
