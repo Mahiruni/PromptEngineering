@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+<defs>
+  <linearGradient id="bg" x1="90" y1="40" x2="1090" y2="860" gradientUnits="userSpaceOnUse"><stop stop-color="#14243A"/><stop offset="1" stop-color="#07111F"/></linearGradient>
+  <linearGradient id="panel" x1="120" y1="100" x2="1050" y2="760" gradientUnits="userSpaceOnUse"><stop stop-color="#223B59"/><stop offset="1" stop-color="#102238"/></linearGradient>
+  <linearGradient id="blue" x1="410" y1="330" x2="790" y2="670" gradientUnits="userSpaceOnUse"><stop stop-color="#66B5FF"/><stop offset="1" stop-color="#2879E8"/></linearGradient>
+  <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#69C4FF" stop-opacity=".7"/><stop offset="1" stop-color="#3C79FF" stop-opacity="0"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="34" stdDeviation="34" flood-color="#07111F" flood-opacity=".28"/></filter>
+  <filter id="soft" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="28"/></filter>
+</defs>
+<!-- soft atmospheric halo -->
+<ellipse cx="790" cy="450" rx="310" ry="280" fill="#2D8BEF" opacity=".10" filter="url(#soft)"/>
+<!-- floating product frame -->
+<g filter="url(#shadow)" transform="rotate(-2 600 450)">
+  <rect x="120" y="105" width="960" height="690" rx="34" fill="url(#bg)" stroke="#87B9E9" stroke-opacity=".22"/>
+  <rect x="145" y="130" width="910" height="640" rx="23" fill="url(#panel)" stroke="#A9D5FF" stroke-opacity=".10"/>
+  <!-- top chrome -->
+  <circle cx="178" cy="164" r="6" fill="#6EBBFF"/><circle cx="200" cy="164" r="6" fill="#5C6F88"/><circle cx="222" cy="164" r="6" fill="#5C6F88"/>
+  <rect x="270" y="148" width="390" height="32" rx="16" fill="#0C192A" stroke="#86B8E8" stroke-opacity=".12"/>
+  <text x="292" y="169" fill="#A8BBD1" font-family="Arial, sans-serif" font-size="12" font-weight="600">PromptForge Business · Engineering workspace</text>
+  <!-- left rail -->
+  <rect x="165" y="205" width="190" height="530" rx="18" fill="#0B1829" fill-opacity=".72" stroke="#91C4F2" stroke-opacity=".08"/>
+  <text x="190" y="242" fill="#F5F9FF" font-family="Arial, sans-serif" font-size="15" font-weight="700">PROMPTFORGE</text>
+  <text x="190" y="264" fill="#6FAFF0" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.8">ENGINEERING LIBRARY</text>
+  <rect x="184" y="292" width="150" height="43" rx="12" fill="#237CE9" fill-opacity=".18" stroke="#55AAFF" stroke-opacity=".28"/>
+  <circle cx="203" cy="314" r="7" fill="#55B4FF"/><text x="221" y="319" fill="#EAF5FF" font-family="Arial, sans-serif" font-size="12" font-weight="700">Prompt Lab</text>
+  <text x="202" y="367" fill="#8EA5BE" font-family="Arial, sans-serif" font-size="12">Library</text>
+  <text x="202" y="403" fill="#8EA5BE" font-family="Arial, sans-serif" font-size="12">Results</text>
+  <text x="202" y="439" fill="#8EA5BE" font-family="Arial, sans-serif" font-size="12">Learning paths</text>
+  <text x="202" y="475" fill="#8EA5BE" font-family="Arial, sans-serif" font-size="12">Saved prompts</text>
+  <rect x="184" y="620" width="150" height="86" rx="14" fill="#142A43" stroke="#86C3FF" stroke-opacity=".10"/>
+  <text x="199" y="646" fill="#6FB9FF" font-family="Arial, sans-serif" font-size="10" font-weight="700">LIBRARY TARGET</text>
+  <text x="199" y="676" fill="#F7FBFF" font-family="Arial, sans-serif" font-size="24" font-weight="700">10,000+</text>
+  <text x="199" y="695" fill="#8198B1" font-family="Arial, sans-serif" font-size="10">premium prompts</text>
+  <!-- workspace -->
+  <text x="388" y="236" fill="#F4F8FE" font-family="Arial, sans-serif" font-size="22" font-weight="700">Turn intent into excellent output.</text>
+  <text x="388" y="260" fill="#8199B3" font-family="Arial, sans-serif" font-size="12">A structured prompt, engineered for repeatable quality.</text>
+  <!-- prompt card -->
+  <rect x="385" y="288" width="410" height="182" rx="18" fill="#0B1829" stroke="#6EADE9" stroke-opacity=".14"/>
+  <text x="410" y="319" fill="#67B7FF" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.6">MASTER PROMPT</text>
+  <text x="410" y="351" fill="#F5F9FF" font-family="Arial, sans-serif" font-size="14" font-weight="700">You are a senior prompt engineer...</text>
+  <rect x="410" y="370" width="330" height="7" rx="3.5" fill="#2C415A"/><rect x="410" y="390" width="285" height="7" rx="3.5" fill="#2C415A"/><rect x="410" y="410" width="308" height="7" rx="3.5" fill="#2C415A"/>
+  <rect x="410" y="438" width="102" height="16" rx="8" fill="#287DE8" fill-opacity=".18"/><text x="425" y="450" fill="#78C2FF" font-family="Arial, sans-serif" font-size="9" font-weight="700">CONTEXT</text>
+  <rect x="523" y="438" width="112" height="16" rx="8" fill="#287DE8" fill-opacity=".18"/><text x="537" y="450" fill="#78C2FF" font-family="Arial, sans-serif" font-size="9" font-weight="700">CONSTRAINTS</text>
+  <rect x="646" y="438" width="94" height="16" rx="8" fill="#287DE8" fill-opacity=".18"/><text x="660" y="450" fill="#78C2FF" font-family="Arial, sans-serif" font-size="9" font-weight="700">QUALITY</text>
+  <!-- result card -->
+  <rect x="815" y="288" width="214" height="182" rx="18" fill="#F8FBFF"/>
+  <text x="838" y="319" fill="#237CE9" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.4">RESULT QUALITY</text>
+  <text x="838" y="363" fill="#102033" font-family="Arial, sans-serif" font-size="38" font-weight="700">98%</text>
+  <text x="838" y="385" fill="#65758A" font-family="Arial, sans-serif" font-size="11">clarity + specificity</text>
+  <rect x="838" y="410" width="150" height="8" rx="4" fill="#DCE8F5"/><rect x="838" y="410" width="138" height="8" rx="4" fill="#237CE9"/>
+  <circle cx="978" cy="445" r="12" fill="#E7F3FF"/><path d="M973 445l4 4 7-8" stroke="#237CE9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- bottom cards -->
+  <rect x="385" y="495" width="310" height="210" rx="18" fill="#0B1829" stroke="#6EADE9" stroke-opacity=".12"/>
+  <text x="410" y="529" fill="#AFC3D9" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5">ENGINEERING SIGNALS</text>
+  <text x="410" y="566" fill="#F5F9FF" font-family="Arial, sans-serif" font-size="14" font-weight="700">Specificity</text>
+  <rect x="410" y="579" width="245" height="8" rx="4" fill="#263D57"/><rect x="410" y="579" width="220" height="8" rx="4" fill="url(#blue)"/>
+  <text x="410" y="618" fill="#F5F9FF" font-family="Arial, sans-serif" font-size="14" font-weight="700">Context</text>
+  <rect x="410" y="631" width="245" height="8" rx="4" fill="#263D57"/><rect x="410" y="631" width="238" height="8" rx="4" fill="url(#blue)"/>
+  <text x="410" y="670" fill="#F5F9FF" font-family="Arial, sans-serif" font-size="14" font-weight="700">Output control</text>
+  <rect x="410" y="683" width="245" height="8" rx="4" fill="#263D57"/><rect x="410" y="683" width="227" height="8" rx="4" fill="url(#blue)"/>
+  <rect x="715" y="495" width="314" height="210" rx="18" fill="#F8FBFF"/>
+  <text x="742" y="529" fill="#237CE9" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5">CURATED EXAMPLES</text>
+  <text x="742" y="565" fill="#102033" font-family="Arial, sans-serif" font-size="15" font-weight="700">Before → engineered → result</text>
+  <rect x="742" y="586" width="254" height="31" rx="10" fill="#EAF1F8"/><rect x="742" y="629" width="210" height="31" rx="10" fill="#DDEEFF"/><rect x="742" y="672" width="232" height="12" rx="6" fill="#CFE5FA"/>
+  <circle cx="1000" cy="701" r="5" fill="#237CE9"/>
+</g>
+<!-- small floating accent -->
+<g filter="url(#shadow)">
+ <rect x="895" y="80" width="205" height="66" rx="18" fill="#FFFFFF" stroke="#D6E6F6"/>
+ <circle cx="922" cy="113" r="12" fill="#E8F4FF"/><path d="M916 113l4 4 8-10" stroke="#237CE9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+ <text x="947" y="109" fill="#102033" font-family="Arial, sans-serif" font-size="12" font-weight="700">Engineered quality</text>
+ <text x="947" y="126" fill="#718197" font-family="Arial, sans-serif" font-size="10">Built for repeatable results</text>
+</g>
+</svg>
