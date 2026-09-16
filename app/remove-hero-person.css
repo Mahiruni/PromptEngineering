@@ -1,0 +1,2 @@
+/* PromptForge hero: no people or photographic portrait. Keep the cinematic layout and motion graphics. */
+.hero::after{content:none!important;display:none!important;background-image:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
