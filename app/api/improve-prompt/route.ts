@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createHmac, timingSafeEqual } from 'node:crypto'
 
+const FREE_LIMIT = 5
+const FREE_COOKIE = 'promptforge_improve_free'
+
+type TrialPayload = { used: number }
+
 function getCustomerId(request: NextRequest) {
   const raw = request.cookies.get('promptforge_pro')?.value
   const secret = process.env.PROMPTFORGE_SESSION_SECRET
@@ -14,6 +19,44 @@ function getCustomerId(request: NextRequest) {
   return value
 }
 
+function signTrial(payload: TrialPayload) {
+  const value = Buffer.from(JSON.stringify(payload)).toString('base64url')
+  const secret = process.env.PROMPTFORGE_SESSION_SECRET
+  if (!secret) return value
+  return `${value}.${createHmac('sha256', secret).update(value).digest('base64url')}`
+}
+
+function readTrial(request: NextRequest): TrialPayload {
+  const raw = request.cookies.get(FREE_COOKIE)?.value
+  if (!raw) return { used: 0 }
+  const index = raw.lastIndexOf('.')
+  const value = index > 0 ? raw.slice(0, index) : raw
+  const supplied = index > 0 ? raw.slice(index + 1) : ''
+  const secret = process.env.PROMPTFORGE_SESSION_SECRET
+  if (secret) {
+    if (index < 1) return { used: 0 }
+    const expected = createHmac('sha256', secret).update(value).digest('base64url')
+    try { if (!timingSafeEqual(Buffer.from(supplied), Buffer.from(expected))) return { used: 0 } } catch { return { used: 0 } }
+  }
+  try {
+    const parsed = JSON.parse(Buffer.from(value, 'base64url').toString('utf8'))
+    const used = Number(parsed?.used)
+    return Number.isInteger(used) && used >= 0 && used <= FREE_LIMIT ? { used } : { used: 0 }
+  } catch { return { used: 0 } }
+}
+
+function trialResponse(payload: TrialPayload, init?: ResponseInit) {
+  const response = NextResponse.json({ used: payload.used, remaining: Math.max(0, FREE_LIMIT - payload.used), limit: FREE_LIMIT }, init)
+  response.cookies.set(FREE_COOKIE, signTrial(payload), {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 60 * 60 * 24 * 365,
+  })
+  return response
+}
+
 async function hasActiveSubscription(customerId: string) {
   const secret = process.env.STRIPE_SECRET_KEY
   if (!secret) return false
@@ -25,10 +68,23 @@ async function hasActiveSubscription(customerId: string) {
   return data.data?.some((subscription: { status: string }) => subscription.status === 'active' || subscription.status === 'trialing') ?? false
 }
 
-export async function POST(request: NextRequest) {
+async function isPro(request: NextRequest) {
   const customerId = getCustomerId(request)
-  if (!customerId || !(await hasActiveSubscription(customerId))) {
-    return NextResponse.json({ error: 'Pro subscription required. Start the PromptForge Pro plan to unlock Prompt Improver.' }, { status: 402 })
+  return Boolean(customerId && await hasActiveSubscription(customerId))
+}
+
+export async function GET(request: NextRequest) {
+  if (await isPro(request)) return NextResponse.json({ used: 0, remaining: null, limit: FREE_LIMIT, pro: true })
+  const trial = readTrial(request)
+  return NextResponse.json({ ...trial, remaining: FREE_LIMIT - trial.used, limit: FREE_LIMIT, pro: false })
+}
+
+export async function POST(request: NextRequest) {
+  const pro = await isPro(request)
+  const trial = readTrial(request)
+
+  if (!pro && trial.used >= FREE_LIMIT) {
+    return NextResponse.json({ error: 'You have used all 5 free improvements. Subscribe or purchase PromptForge Pro to continue.', code: 'FREE_LIMIT_REACHED', used: FREE_LIMIT, remaining: 0, limit: FREE_LIMIT }, { status: 402 })
   }
 
   const body = await request.json().catch(() => null)
@@ -52,5 +108,16 @@ export async function POST(request: NextRequest) {
 
   const output = data.output_text || data.output?.flatMap((item: { content?: Array<{ text?: string }> }) => item.content || []).map((part: { text?: string }) => part.text || '').join('')
   if (!output) return NextResponse.json({ error: 'No improved prompt was returned.' }, { status: 502 })
-  return NextResponse.json({ prompt: output.trim() })
+
+  if (pro) return NextResponse.json({ prompt: output.trim(), used: trial.used, remaining: null, limit: FREE_LIMIT, pro: true })
+  const next = { used: trial.used + 1 }
+  const result = NextResponse.json({ prompt: output.trim(), ...next, remaining: FREE_LIMIT - next.used, limit: FREE_LIMIT, pro: false })
+  result.cookies.set(FREE_COOKIE, signTrial(next), {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 60 * 60 * 24 * 365,
+  })
+  return result
 }
