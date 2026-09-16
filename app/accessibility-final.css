@@ -40,4 +40,34 @@ main:not(.light) footer{background:#05070a!important;border-color:#303843!import
 /* WCAG-focused focus states remain visible in either theme. */
 main :is(a,button,input,select,textarea,summary):focus-visible,.info-page :is(a,button,input,select,textarea,summary):focus-visible{outline:3px solid #5da2ff!important;outline-offset:3px}
 
+/* PromptForge Studio: compact, conventional product-dialog treatment. */
+.studio-modal{width:min(760px,calc(100vw - 32px))!important;max-height:min(720px,calc(100vh - 48px));overflow:auto;padding:28px!important;border-radius:18px!important;box-shadow:0 28px 90px rgba(0,0,0,.28)!important}
+.studio-modal .modal-head{align-items:flex-start;margin-bottom:22px}
+.studio-modal .modal-head h2{font-size:clamp(28px,4vw,42px)!important;line-height:1.05!important;letter-spacing:-.045em!important;margin:10px 0 0!important}
+.wizard-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:5px;background:rgba(127,127,127,.08);border:1px solid var(--line);border-radius:12px;margin-bottom:22px}
+.wizard-steps button{min-width:0;border:0;background:transparent;color:var(--muted);border-radius:9px;padding:10px 8px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:12px;font-weight:700;cursor:pointer;transition:background .2s ease,color .2s ease}
+.wizard-steps button span{font-size:10px;letter-spacing:.08em;opacity:.7}
+.wizard-steps button.active{background:var(--surface);color:var(--text);box-shadow:0 3px 12px rgba(0,0,0,.08)}
+.wizard-content{border:1px solid var(--line);border-radius:14px;padding:24px;background:var(--surface);margin-bottom:18px}
+.wizard-content h3{font-size:clamp(24px,3.5vw,34px)!important;line-height:1.08!important;letter-spacing:-.035em!important;margin:8px 0 18px!important}
+.wizard-content textarea{width:100%;min-height:150px;resize:vertical;border:1px solid var(--line);border-radius:11px;padding:13px 14px;background:var(--bg);color:var(--text);font:500 14px/1.55 inherit;outline:none}
+.wizard-content textarea:focus{border-color:#5da2ff;box-shadow:0 0 0 3px rgba(93,162,255,.12)}
+.studio-modal .modal-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:2px}
+
+/* Cookie consent: compact, standard bottom banner rather than a large modal. */
+.cookie-wrap{position:fixed!important;left:16px!important;right:16px!important;bottom:16px!important;z-index:120!important;display:flex!important;justify-content:center!important;pointer-events:none!important}
+.cookie-card{width:min(860px,100%)!important;display:flex!important;align-items:center!important;gap:18px!important;padding:13px 15px!important;border:1px solid var(--line)!important;border-radius:13px!important;background:var(--surface)!important;color:var(--text)!important;box-shadow:0 16px 50px rgba(0,0,0,.18)!important;pointer-events:auto!important}
+.cookie-copy{min-width:0!important;flex:1 1 auto!important}
+.cookie-kicker{display:block!important;font-size:9px!important;font-weight:800!important;letter-spacing:.14em!important;color:var(--muted)!important;margin-bottom:3px!important}
+.cookie-copy h2{font-size:14px!important;line-height:1.2!important;margin:0 0 3px!important;letter-spacing:-.01em!important}
+.cookie-copy p{font-size:11px!important;line-height:1.45!important;color:var(--muted)!important;margin:0!important;max-width:610px!important}
+.cookie-link{border:0;background:none;color:inherit;text-decoration:underline;font-size:10px;font-weight:700;padding:3px 0;cursor:pointer}
+.cookie-actions{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important;flex:0 0 auto!important;flex-wrap:wrap!important}
+.cookie-actions .btn{min-height:34px!important;padding:7px 10px!important;border-radius:8px!important;font-size:11px!important;white-space:nowrap!important}
+.cookie-settings{flex:1;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cookie-settings label{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:9px;min-width:150px}
+.cookie-settings label span{display:grid;gap:2px}.cookie-settings label b{font-size:11px}.cookie-settings label small{font-size:9px;color:var(--muted)}
+.cookie-settings input{accent-color:#075dcc}
+@media(max-width:700px){.studio-modal{width:min(100% - 20px,560px)!important;padding:18px!important;border-radius:15px!important}.studio-modal .modal-head{margin-bottom:16px}.studio-modal .modal-head h2{font-size:27px!important}.wizard-steps{grid-template-columns:1fr 1fr}.wizard-steps button{justify-content:flex-start;padding:9px}.wizard-content{padding:18px}.studio-modal .modal-foot .btn{min-height:38px}.cookie-wrap{left:10px!important;right:10px!important;bottom:10px!important}.cookie-card{align-items:flex-start!important;flex-direction:column!important;gap:8px!important;padding:12px!important;border-radius:11px!important}.cookie-copy h2{font-size:13px!important}.cookie-copy p{font-size:10px!important}.cookie-actions{width:100%!important;justify-content:flex-start!important}.cookie-actions .btn{flex:1 1 auto!important;min-height:32px!important;font-size:10px!important;padding:6px 8px!important}.cookie-settings{width:100%!important}.cookie-settings label{flex:1 1 130px!important}}
+
 @media(prefers-reduced-motion:reduce){html,body,main{transition:none!important}}
