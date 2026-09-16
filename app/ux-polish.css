@@ -1,73 +1,16 @@
-:root{
-  --ux-accent:#f4e000;
-  --ux-ink:#090909;
-  --ux-surface:#101010;
-  --ux-border:rgba(255,255,255,.10);
-  --ux-muted:#a6a6a6;
-  --ux-radius:18px;
-  --ux-shadow:0 24px 80px rgba(0,0,0,.22);
-}
+:root{--ux-accent:#f4e000;--ux-ink:#090909;--ux-surface:#101010;--ux-border:rgba(255,255,255,.10);--ux-muted:#a6a6a6;--ux-radius:18px;--ux-shadow:0 24px 80px rgba(0,0,0,.22)}
+:where(button,a,input,select,textarea){-webkit-tap-highlight-color:transparent}:where(button,.btn,.chip,.icon-btn,.prompt-title,.path,.price a,.text-link){transition:transform .22s cubic-bezier(.16,1,.3,1),background-color .22s ease,border-color .22s ease,color .22s ease,box-shadow .22s ease,opacity .22s ease}:where(button,.btn,.chip,.icon-btn,.prompt-title,.path,.price a,.text-link):hover{transform:translateY(-1px)}:where(button,.btn,.chip,.icon-btn,.prompt-title,.path,.price a,.text-link):focus-visible{outline:2px solid var(--ux-accent);outline-offset:4px;box-shadow:0 0 0 6px rgba(244,224,0,.10)}
+:where(.card,.premium-card,.premium-panel,.detail-modal,.prompt-page .card){box-shadow:var(--ux-shadow);border-color:var(--ux-border)}:where(.premium-card,.path,.price):hover{box-shadow:0 28px 90px rgba(0,0,0,.28);border-color:rgba(244,224,0,.22)}
+:where(.section-title,h1,h2,h3,p){text-wrap:balance}:where(.muted,.hero-copy,.lead,.detail-sub){max-width:68ch}:where(pre){tab-size:2;white-space:pre-wrap;overflow-wrap:anywhere}
+:where(.search-wrap){border:1px solid var(--ux-border);box-shadow:0 14px 40px rgba(0,0,0,.12)}:where(.search-wrap:focus-within){border-color:rgba(244,224,0,.55);box-shadow:0 0 0 4px rgba(244,224,0,.08),0 18px 55px rgba(0,0,0,.18);transform:translateY(-1px)}:where(.search-wrap input)::placeholder{opacity:.65}
+:where(.chip){cursor:pointer}:where(.chip.active){box-shadow:inset 0 0 0 1px rgba(244,224,0,.18),0 6px 22px rgba(244,224,0,.06)}:where(select){cursor:pointer}
+@media(max-width:760px){:where(button,.btn,.icon-btn,a.chip,.chip,select){min-height:44px}:where(.btn,.chip){padding-inline:14px}:where(.section,.prompt-page-hero,.prompt-detail-layout){scroll-margin-top:84px}:where(.hero-actions,.prompt-actions,.prompt-toolbar-actions,.nav-actions){gap:10px;flex-wrap:wrap}:where(.hero-actions .btn,.prompt-actions .btn){flex:1 1 150px}}
+:where(.premium-nav,.prompt-page-nav){backdrop-filter:blur(18px) saturate(125%);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}:where(.brand){white-space:nowrap}
+:where(.modal-backdrop){padding:clamp(12px,3vw,32px);overscroll-behavior:contain}:where(.detail-modal){max-height:min(88vh,900px);overflow:auto;overscroll-behavior:contain}:where(.prompt-detail-code,.prompt-pane pre){line-height:1.75}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+::selection{background:var(--ux-accent);color:#050505}html{scroll-behavior:smooth;scroll-padding-top:88px}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:rgba(0,0,0,.08)}::-webkit-scrollbar-thumb{background:rgba(128,128,128,.42);border:3px solid transparent;background-clip:padding-box;border-radius:999px}::-webkit-scrollbar-thumb:hover{background:rgba(128,128,128,.65);border:3px solid transparent;background-clip:padding-box}
+.prompt-card .prompt-title{display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;text-align:left}.prompt-card .prompt-title svg{flex:0 0 auto;opacity:.55}.prompt-card .prompt-title:hover svg{opacity:1;transform:translateX(3px)}.prompt-page .prompt-back{display:inline-flex;align-items:center;gap:8px}.prompt-page .prompt-page-heading{gap:32px}@media(max-width:850px){.prompt-page .prompt-page-heading{display:block}.prompt-page .prompt-page-badges{margin-top:18px}}
 
-/* 01 — Stronger interaction hierarchy: every actionable control gets a precise hover/focus state. */
-:where(button,a,input,select,textarea){-webkit-tap-highlight-color:transparent}
-:where(button,.btn,.chip,.icon-btn,.prompt-title,.path,.price a,.text-link){transition:transform .22s cubic-bezier(.16,1,.3,1),background-color .22s ease,border-color .22s ease,color .22s ease,box-shadow .22s ease,opacity .22s ease}
-:where(button,.btn,.chip,.icon-btn,.prompt-title,.path,.price a,.text-link):hover{transform:translateY(-1px)}
-:where(button,.btn,.chip,.icon-btn,.prompt-title,.path,.price a,.text-link):focus-visible{outline:2px solid var(--ux-accent);outline-offset:4px;box-shadow:0 0 0 6px rgba(244,224,0,.10)}
-
-/* 02 — Premium depth: consistent elevation without turning the interface into glass soup. */
-:where(.card,.premium-card,.premium-panel,.detail-modal,.prompt-page .card){box-shadow:var(--ux-shadow);border-color:var(--ux-border)}
-:where(.premium-card,.path,.price):hover{box-shadow:0 28px 90px rgba(0,0,0,.28);border-color:rgba(244,224,0,.22)}
-
-/* 03 — Better reading rhythm: constrain long-form content and improve scanability. */
-:where(.section-title,h1,h2,h3,p){text-wrap:balance}
-:where(.muted,.hero-copy,.lead,.detail-sub){max-width:68ch}
-:where(pre){tab-size:2;white-space:pre-wrap;overflow-wrap:anywhere}
-
-/* 04 — Search becomes a primary tool, not a decorative input. */
-:where(.search-wrap){border:1px solid var(--ux-border);box-shadow:0 14px 40px rgba(0,0,0,.12)}
-:where(.search-wrap:focus-within){border-color:rgba(244,224,0,.55);box-shadow:0 0 0 4px rgba(244,224,0,.08),0 18px 55px rgba(0,0,0,.18);transform:translateY(-1px)}
-:where(.search-wrap input)::placeholder{opacity:.65}
-
-/* 05 — Filter controls feel like a system with clear selected states. */
-:where(.chip){cursor:pointer}
-:where(.chip.active){box-shadow:inset 0 0 0 1px rgba(244,224,0,.18),0 6px 22px rgba(244,224,0,.06)}
-:where(select){cursor:pointer}
-
-/* 06 — Mobile-first touch targets and resilient layouts. */
-@media(max-width:760px){
-  :where(button,.btn,.icon-btn,a.chip,.chip,select){min-height:44px}
-  :where(.btn,.chip){padding-inline:14px}
-  :where(.section,.prompt-page-hero,.prompt-detail-layout){scroll-margin-top:84px}
-  :where(.hero-actions,.prompt-actions,.prompt-toolbar-actions,.nav-actions){gap:10px;flex-wrap:wrap}
-  :where(.hero-actions .btn,.prompt-actions .btn){flex:1 1 150px}
-}
-
-/* 07 — Navigation clarity: sticky surfaces gain contrast only while the page is in motion. */
-:where(.premium-nav,.prompt-page-nav){backdrop-filter:blur(18px) saturate(125%);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
-:where(.brand){white-space:nowrap}
-
-/* 08 — Modals and detail views behave like focused workspaces. */
-:where(.modal-backdrop){padding:clamp(12px,3vw,32px);overscroll-behavior:contain}
-:where(.detail-modal){max-height:min(88vh,900px);overflow:auto;overscroll-behavior:contain}
-:where(.prompt-detail-code,.prompt-pane pre){line-height:1.75}
-
-/* 09 — Motion accessibility: preserve polish without forcing animation on sensitive users. */
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
-}
-
-/* 10 — Visual polish: quiet grain, selection and scrollbar details keep the system intentional. */
-::selection{background:var(--ux-accent);color:#050505}
-html{scroll-behavior:smooth;scroll-padding-top:88px}
-::-webkit-scrollbar{width:10px;height:10px}
-::-webkit-scrollbar-track{background:rgba(0,0,0,.08)}
-::-webkit-scrollbar-thumb{background:rgba(128,128,128,.42);border:3px solid transparent;background-clip:padding-box;border-radius:999px}
-::-webkit-scrollbar-thumb:hover{background:rgba(128,128,128,.65);border:3px solid transparent;background-clip:padding-box}
-
-/* Extra UX safeguards for dense prompt cards. */
-.prompt-card .prompt-title{display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;text-align:left}
-.prompt-card .prompt-title svg{flex:0 0 auto;opacity:.55}
-.prompt-card .prompt-title:hover svg{opacity:1;transform:translateX(3px)}
-.prompt-page .prompt-back{display:inline-flex;align-items:center;gap:8px}
-.prompt-page .prompt-page-heading{gap:32px}
-@media(max-width:850px){.prompt-page .prompt-page-heading{display:block}.prompt-page .prompt-page-badges{margin-top:18px}}
+/* HARD REMOVE: no photographic/portrait hero imagery. Keep only the CSS globe/orbits. */
+.cinematic img,.cinematic picture,.cinematic video,.cinematic [class*="portrait"],.cinematic [class*="woman"],.cinematic [class*="photo"],.hero img,.hero picture,.hero video,.hero [class*="portrait"],.hero [class*="woman"],.hero [class*="photo"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
+.cinematic,.hero,.hero-inner{background-image:none!important}
