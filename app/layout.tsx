@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en" suppressHydrationWarning><body>{children}</body></html>
+  return <html lang="en" suppressHydrationWarning><body>{children}<a href="/improve" className="global-improve-cta">Improve a prompt <span>↗</span></a></body></html>
 }
