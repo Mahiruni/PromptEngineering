@@ -1,4 +1,4 @@
-export type Prompt={id:number;title:string;description:string;category:string;industry:string;difficulty:'Beginner'|'Intermediate'|'Advanced';prompt:string}
+export type Prompt={id:number;title:string;description:string;category:string;industry:string;difficulty:'Beginner'|'Intermediate'|'Advanced';prompt:string;useCase?:string;tags?:string[];exampleInput?:string;exampleOutput?:string;tips?:string[]}
 const items:[string,string,string,string,string,string][]=[
 ['Write a weekly marketing plan','Turn goals into a focused seven-day execution plan.','Marketing','All','Beginner','Create a 7-day marketing plan for [business] targeting [audience]. Include daily objective, channel, asset, CTA, owner, and success metric. Keep it practical and prioritized.'],
 ['Rewrite an offer for conversion','Make a value proposition clearer and more compelling.','Marketing','All','Beginner','Rewrite this offer for [audience]. Lead with the outcome, explain why it is different, remove vague claims, add proof placeholders, and finish with one specific CTA: [offer].'],
@@ -48,5 +48,42 @@ const items:[string,string,string,string,string,string][]=[
 ['Daily CEO priorities','Turn a long task list into focus.','Leadership','All','Beginner','From this task list [tasks], select a focused daily plan. Group by strategic importance and urgency, identify dependencies, and define the three outcomes that matter most today.'],
 ['Website brief','Turn a business idea into a build-ready website brief.','Websites','All','Intermediate','Create a website brief for [business]. Include audience, positioning, sitemap, page goals, conversion actions, content needs, visual direction, trust signals, SEO pages, and technical requirements.'],
 ]
-export const prompts:Prompt[]=items.map((x,i)=>({id:i+1,title:x[0],description:x[1],category:x[2],industry:x[3],difficulty:x[4] as Prompt['difficulty'],prompt:x[5]}))
-export const categories=['Marketing','Sales','Support','Content','HR','Finance','Product','Operations','Leadership','Legal','E-commerce','Agencies','Startups','Hospitality','Real Estate','Healthcare','Education','Procurement','Brand','Analytics','Websites']
+export const prompts:Prompt[]=items.map((x,i)=>({id:i+1,title:x[0],description:x[1],category:x[2],industry:x[3],difficulty:x[4] as Prompt['difficulty'],prompt:x[5],useCase:x[1],tags:[x[2],x[3],x[4]],exampleInput:'Provide the specific context, audience, constraints, and source material needed for this task.',exampleOutput:'A structured, professional result with assumptions clearly marked and actionable next steps.',tips:['Give concrete context and constraints.','Supply source material when accuracy matters.','Review factual, legal, financial, and brand-sensitive claims before publishing.']}))
+
+const expansion:Record<string,string[]>= {
+'Marketing':['Campaign experiment designer','Customer research synthesis','Landing page strategy','Offer positioning system','Content distribution plan','Quarterly growth plan'],
+'Sales':['Discovery call architect','Proposal narrative','Objection diagnosis','Strategic account plan','Pipeline review','Renewal conversation'],
+'Support':['Support triage rubric','Knowledge-base article','Bug report formatter','Support macro','Escalation brief','Support quality audit'],
+'Content':['Editorial calendar','Expert article','Case study','Production brief','Content repurposing system','Thought-leadership argument'],
+'Copywriting':['Homepage copy system','Product launch copy','Ad concept matrix','Value proposition options','Email subject-line lab','Interface microcopy'],
+'Brand Strategy':['Brand positioning','Brand architecture','Messaging hierarchy','Competitive narrative','Brand audit','Naming system'],
+'HR & Recruiting':['Recruiting scorecard','Sourcing strategy','Interview debrief','90-day onboarding','Performance review','Learning plan'],
+'Finance & Accounting':['Finance dashboard','Month-end close checklist','Unit economics','Expense policy','Scenario model','Invoice reconciliation'],
+'Product Management':['Product strategy','Feature discovery','Roadmap narrative','Metric tree','Experiment design','Launch readiness plan'],
+'Operations':['Workflow redesign','Operations dashboard','Capacity planning','Incident review','Vendor operations','Quality-control system'],
+'Leadership':['CEO weekly review','Decision framework','Executive change communication','Leadership offsite','Risk review','Priority reset'],
+'Legal':['Contract review intake','Vendor agreement brief','Agreement comparison','Legal intake questionnaire','Policy review prep','IP inventory'],
+'E-commerce':['Merchandising plan','Product detail page','Retention flow','Returns analysis','Store search strategy','Promotion economics'],
+'Agencies':['Client discovery workshop','Creative brief','Scope clarification','Agency project plan','Client performance report','Retainer operating model'],
+'Startups':['Idea validation sprint','Founder weekly review','GTM plan','Pricing experiment','Startup metric tree','Competitive wedge'],
+'Design & UI/UX':['UX audit','Design system foundation','User flow map','Dashboard UX','Onboarding UX','Accessibility review'],
+'Graphic Design':['Visual concept directions','Campaign key visual','Social carousel system','Presentation design system','Infographic brief','Visual QA'],
+'Art Direction':['Campaign art direction','Moodboard brief','Editorial direction','Photography concept','Brand visual world','Creative review'],
+'Photography':['Product photography plan','Portrait session brief','Travel photo story','Food photography brief','Property photography plan','Photography critique'],
+'Video Scripting':['Short-form educational script','Explainer video','Founder video','Video ad matrix','Tutorial script','Case-study video'],
+'Music & Sound':['Music creative brief','Podcast sound workflow','Sonic identity system','Sound-design brief','Original song concept','Music release plan'],
+'Software Engineering':['Architecture review','API contract','Code review','Database schema','Testing strategy','Production debugging plan'],
+'AI Agents':['Agent specification','Tool-use policy','Agent evaluation suite','Agent system prompt','Agent memory model','Agent failure handling'],
+'Data Analysis':['Data quality audit','Metric diagnosis','Cohort analysis','Experiment analysis','Executive dashboard','Forecasting brief'],
+'Education':['Course architecture','Lesson plan','Assessment design','Tutor feedback','Study plan','Concept explainer'],
+'Personal Productivity':['Daily planning','Weekly review','Project breakdown','Meeting notes','Inbox triage','Personal knowledge base'],
+'Creative Writing':['Short story','Character design','Scene revision','Dialogue with subtext','Opening chapter','Worldbuilding'],
+'Storytelling':['Brand story','Case-study story','Presentation narrative','Personal story','Data story','Customer story'],
+'SEO':['SEO strategy','Keyword content brief','Technical SEO audit','Content gap analysis','SEO page optimization','SEO reporting'],
+'Automation':['Automation opportunity map','No-code workflow','Integration brief','Automation QA','Workflow documentation','AI automation assessment']
+}
+const directive=(category:string,title:string)=>`Return a polished, ready-to-use result for ${title}. Start by identifying the objective and audience. Use supplied evidence only; clearly mark assumptions and missing information. Structure the output with concrete examples, quality checks, and a final action list. Optimize for specificity, usefulness, and professional execution rather than generic advice. Context: [Provide relevant ${category.toLowerCase()} context, audience, source material, constraints, and desired outcome].`;
+let nextId=prompts.length+1;
+for(const [category,tasks] of Object.entries(expansion)) for(const title of tasks){const p=directive(category,title);prompts.push({id:nextId++,title,description:`A professional ${category.toLowerCase()} workflow engineered for ${title.toLowerCase()}.`,category,industry:'General',difficulty:['Beginner','Intermediate','Advanced'][nextId%3] as Prompt['difficulty'],prompt:p,useCase:`Use PromptForge for ${title.toLowerCase()} with real business or creative context.`,tags:[category,'AI','Professional','Original'],exampleInput:`${category} context, audience, constraints, source material, and desired result.`,exampleOutput:`A structured ${category.toLowerCase()} deliverable with evidence, assumptions, examples, and next actions.`,tips:['Replace bracketed context with real details.','Ask for evidence and explicit assumptions when accuracy matters.','Iterate using the Improve/Expand action instead of accepting the first draft.']});}
+export const LIBRARY_TARGET=10000
+export const categories=Array.from(new Set(prompts.map(p=>p.category)))
